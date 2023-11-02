@@ -1,5 +1,15 @@
 # Changelog
 
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.1.7](https://github.com/CMorooney/obsidian-game-search-plugin/compare/0.1.6...0.1.7) (2023-11-02)
+
+### [0.1.9](https://github.com/CMorooney/obsidian-game-search-plugin/compare/0.1.6...0.1.9) (2023-11-02)
+
+### [0.1.8](https://github.com/CMorooney/obsidian-game-search-plugin/compare/0.1.6...0.1.8) (2023-11-02)
+
+### [0.1.7](https://github.com/CMorooney/obsidian-game-search-plugin/compare/0.1.6...0.1.7) (2023-11-02)
+
 ## 0.1.6
 fixes broken icon for ribbon button ([Issue 8](https://github.com/CMorooney/obsidian-game-search-plugin/issues/8))
 
