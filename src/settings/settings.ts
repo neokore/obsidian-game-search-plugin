@@ -13,6 +13,7 @@ export interface GameSearchPluginSettings {
   fileNameFormat: string; // new file name format
   templateFile: string;
   rawgApiKey: string;
+  steamgriddbApiKey: string;
 }
 
 export const DEFAULT_SETTINGS: GameSearchPluginSettings = {
@@ -20,6 +21,7 @@ export const DEFAULT_SETTINGS: GameSearchPluginSettings = {
   fileNameFormat: '',
   templateFile: '',
   rawgApiKey: '',
+  steamgriddbApiKey: '',
 };
 
 export class GameSearchSettingTab extends PluginSettingTab {
@@ -40,14 +42,22 @@ export class GameSearchSettingTab extends PluginSettingTab {
 
     createHeader(containerEl, 'General Settings');
 
-    new Setting(containerEl).setName('RAWG Api Key').addTextArea(textArea => {
-      const prevValue = this.plugin.settings.rawgApiKey;
+    new Setting(containerEl).setName('SteamGridDB Api Key').addTextArea(textArea => {
+      const prevValue = this.plugin.settings.steamgriddbApiKey;
       textArea.setValue(prevValue).onChange(async value => {
         const newValue = value;
-        this.plugin.settings.rawgApiKey = newValue;
+        this.plugin.settings.steamgriddbApiKey = newValue;
         await this.plugin.saveSettings();
       });
     }),
+      new Setting(containerEl).setName('RAWG Api Key').addTextArea(textArea => {
+        const prevValue = this.plugin.settings.rawgApiKey;
+        textArea.setValue(prevValue).onChange(async value => {
+          const newValue = value;
+          this.plugin.settings.rawgApiKey = newValue;
+          await this.plugin.saveSettings();
+        });
+      }),
       // New file location
       new Setting(containerEl)
         .setName('New file location')

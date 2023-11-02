@@ -40,7 +40,11 @@ export function replaceVariableSyntax(game: Game, text: string): string {
   }
 
   game.genres.toString = function (this: Genre[]) {
-    return this.map(g => g.name).join(', ');
+    return this.map(
+      g =>
+        `
+        - ${g.name}`,
+    ).join('');
   };
 
   game.platforms.toString = function (this: PlatformDetailed[]) {
@@ -59,14 +63,19 @@ export function replaceVariableSyntax(game: Game, text: string): string {
     return this.map(p => p.platform.platform.name + ': ' + p.metascore).join(', ');
   };
 
+  game.released_year = releaseYearForGame(game);
+  game.esrb_rating_name = game.esrb_rating?.name ?? '';
+
   const entries = Object.entries(game);
 
-  return entries
+  const result = entries
     .reduce((result, [key, val = '']) => {
       return result.replace(new RegExp(`{{${key}}}`, 'ig'), val);
     }, text)
     .replace(/{{\w+}}/gi, '')
     .trim();
+
+  return result;
 }
 
 export function camelToSnakeCase(str) {

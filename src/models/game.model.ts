@@ -46,6 +46,7 @@ export interface Game {
   metacritic: number;
   metacritic_platforms: MetacriticPlatform[];
   released: string;
+  released_year: string;
   tba: boolean;
   updated: string;
   background_image: string;
@@ -90,7 +91,9 @@ export interface Game {
   tags: Tag[];
   publishers: Publisher[];
   esrb_rating: ESRBRating;
+  esrb_rating_name: string;
   description_raw: string;
+  banner: string;
 }
 
 export const releaseYearForGame = (game: GameFromSearch | Game): string => {
